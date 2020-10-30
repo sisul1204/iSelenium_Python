@@ -11,9 +11,9 @@ from selenium.webdriver.chrome.options import Options
 class ISelenium(unittest.TestCase):
     # 读入配置文件
     def get_config(self):
-        config = configparser.ConfigParser()
-        config.read(os.path.join(os.environ['HOME'], 'iselenium.ini'))
-        return config
+        self.config = configparser.ConfigParser()
+        self.config.read(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'iselenium.ini'), encoding='utf-8')
+        return self.config
 
     def tearDown(self):
         self.driver.quit()
